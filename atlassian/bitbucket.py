@@ -165,7 +165,9 @@ class Bitbucket(AtlassianRestAPI):
             params['limit'] = limit
         if filter_str:
             params['filter'] = filter_str
-        return (self.get(url, params=params) or {}).get('values')
+        resp = self.get(url, params=params)
+        print(resp)
+        return (resp or {}).get('values')
 
     def repo_keys(self, project_key, repo_key, limit=99999, filter_str=None):
         """
